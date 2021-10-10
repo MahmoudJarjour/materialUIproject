@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Grid, Paper} from '@material-ui/core'
+import {Container, Grid, Paper} from '@material-ui/core'
 
 export default function Notes() {
   const [notes, setNotes] = useState([]);
@@ -11,12 +11,12 @@ export default function Notes() {
   }, [])
 
   return (
-    <div>
+    <Container>
 
       
         <Grid container>
         {notes.map(note => (
-           <Grid item key={note.id} xs={12} sm={6} md={3} style={{margin:'10px'}}>
+           <Grid item key={note.id} xs={12} sm={6} md={4}>
 
              <Paper variant='outlined'>{note.firstName}</Paper>
              <Paper variant='outlined'>{note.lastName}</Paper>
@@ -27,7 +27,7 @@ export default function Notes() {
         ))}
         </Grid>
       
-    </div>
+    </Container>
   )
 }
 
