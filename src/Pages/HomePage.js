@@ -50,6 +50,9 @@ const HomePage = () => {
                     body: JSON.stringify({firstName,lastName, discription, category})
             }).then( () => history.push('/notes') )
         }
+        
+
+        
     }
     return (
         <>

@@ -2,15 +2,15 @@ import { Card, CardContent, CardHeader, CardMedia, Grid, IconButton, Typography 
 import React from "react";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-export default function NoteCard({note}){
+export default function NoteCard({note , handleDelete}){
     return (
         <>
 
         <Grid  > 
-            <Card>
+            <Card elevation={3}>
                 <CardHeader 
                     action={
-                        <IconButton aria-label="settings">
+                        <IconButton onClick={()=> handleDelete(note.id)}>
                             <DeleteOutlineIcon />
                         </IconButton>
                         }
@@ -21,12 +21,12 @@ export default function NoteCard({note}){
                 <CardMedia
                     component="img"
                     height="194"
-                    image='https://picsum.photos/203'
-                    alt="https://picsum.photos/203"
+                    image='https://picsum.photos/803'
+                    alt="https://picsum.photos/803"
                 >
                 </CardMedia>
                 <CardContent>
-                    <Typography>
+                    <Typography variant='body2' color='textSecondary'>
                         {note.discription}
                     </Typography>
                 </CardContent>

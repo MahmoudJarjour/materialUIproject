@@ -11,14 +11,26 @@ export default function Notes() {
       .then(data => setNotes(data))
   }, [])
 
+  // delete card from the json file
+  const handleDelete = async (id) =>{
+    await fetch('http://localhost:3001/notes/'+id,{
+        method:'DELETE'
+    })
+
+// delete card from the state and set the new state 
+    
+    const newNotes = notes.filter(note => note.id != id)
+    setNotes(newNotes)
+}
+
   return (
     <Container>
 
       
-        <Grid container>
+        <Grid container spacing={3}>
         {notes.map( note => (
-           <Grid item key={note.id} sm={12} md={6} lg={3}  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <NoteCard note={note} />
+           <Grid item key={note.id} sm={12} md={6} lg={3}  >
+                <NoteCard note={note} handleDelete={handleDelete} />
             </Grid>
                             )
                   )
