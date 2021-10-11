@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Container, Grid, Paper} from '@material-ui/core'
+import {Container, Grid} from '@material-ui/core'
 import NoteCard from '../Component/NoteCard';
 
 export default function Notes() {

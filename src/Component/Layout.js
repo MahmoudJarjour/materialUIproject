@@ -1,7 +1,6 @@
 import { Container, Drawer, List, ListItem, ListItemIcon, ListItemText, makeStyles, Typography } from "@material-ui/core";
-import React, { useState } from "react";
+import React from "react";
 import SubjectIcon from '@mui/icons-material/Subject';
-import DoNotDisturbAltOutlinedIcon from '@mui/icons-material/DoNotDisturbAltOutlined';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useHistory, useLocation } from "react-router";
 
