@@ -1,6 +1,7 @@
-import { Card, CardContent, CardHeader, CardMedia, Grid, IconButton, makeStyles, Typography } from "@material-ui/core";
+import { Avatar, Card, CardContent, CardHeader, CardMedia, Grid, IconButton, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { blue, purple , gray, pink } from "@material-ui/core/colors";
 
 
 const useStyles = makeStyles({
@@ -17,6 +18,19 @@ const useStyles = makeStyles({
         },
 
     },
+    avatar:{
+        backgroundColor: (note) =>{
+            if(note.category === 'male'){
+                return blue[500]
+            }
+            if(note.category === 'female'){
+                return purple[500]
+            }
+            if(note.category === 'other'){
+                return pink[500]
+            }
+        }
+    }
         
     }
 )
@@ -29,6 +43,10 @@ export default function NoteCard({note , handleDelete}){
         <Grid  > 
             <Card elevation={3} className={classes.test}>
                 <CardHeader 
+                    avatar={
+                        <Avatar className={classes.avatar} variant='rounded'>{note.category[0].toUpperCase()}</Avatar>
+                    }
+
                     action={
                         <IconButton onClick={()=> handleDelete(note.id)}>
                             <DeleteOutlineIcon />

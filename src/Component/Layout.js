@@ -73,7 +73,7 @@ const location = useLocation();
                       Today is the  {format(new Date(),'do MMMM Y')}
                     </Typography>
                     <Typography>
-                        UserName
+                        Mood Test
                     </Typography>
                     <Avatar src="/photo.jpg" className={classes.avatar}/>
                 </Toolbar>
