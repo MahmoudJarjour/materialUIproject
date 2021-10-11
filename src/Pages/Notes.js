@@ -19,7 +19,7 @@ export default function Notes() {
 
 // delete card from the state and set the new state 
     
-    const newNotes = notes.filter(note => note.id != id)
+    const newNotes = notes.filter(note => note.id !== id)
     setNotes(newNotes)
 }
 
