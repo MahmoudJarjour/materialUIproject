@@ -3,42 +3,38 @@ import {makeStyles} from '@material-ui/core';
 
 
 
-const useStyles = makeStyles({
-    Button:{
-        color:'red',
-        backgroundColor:'blue',
-        '&:hover':{
-            backgroundColor:'purple',
+const useStyles = makeStyles((theme)=>{
+    return {
+        Button:{
+            
+            backgroundColor:"primary",
+            '&:hover':{
+                backgroundColor:'secondary',
+            },
+            marginLeft: '35%',
+            display:'flex',
+            padding : theme.spacing(3)
+          
         },
-        marginLeft: '35%',
-        
-        display:'flex',
-    },
+        Typo:{
+            color:'pink',
+        },
+        ButtonGroups:{
+            backgroundColor:'red',
+            marginLeft:'35%',
+            padding:'10px',
+            margin:'auto',
+            display:'flex',
+            
+        },
+        textfield:{
+            marginTop:'20px',
+            marginBottom:'20px',
+            display:'block',   
+        },
     
-    Typo:{
-        color:'pink',
-    },
 
-    ButtonGroups:{
-        backgroundColor:'red',
-        marginLeft:'35%',
-        padding:'10px',
-        margin:'auto',
-        display:'flex',
-        
-    },
-
-    textfield:{
-        marginTop:'20px',
-        marginBottom:'20px',
-        display:'block',
-        
-        
-        
     }
-
-
-
-    })
+ })
 
 export default useStyles;

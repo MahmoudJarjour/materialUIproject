@@ -57,17 +57,13 @@ const HomePage = () => {
     return (
         <>
             <Container className={classes.Typo}>
-                <Typography color='primary' variant="h4" align="center" > 
-                    This is the HomePage every thing you'll type you can see it in console
-                </Typography>
+                
 
-                <Typography align="center" noWrap>========================================================</Typography>
                 
                 <Button fullWidth className={classes.Button} startIcon={<DoubleArrowIcon/>} variant='contained'  onClick={()=> history.push('/vjbkf')}>
                     button to 404 page
                 </Button>
 
-                <Typography align="center" noWrap>========================================================</Typography>
             </Container>
 
             <Container >

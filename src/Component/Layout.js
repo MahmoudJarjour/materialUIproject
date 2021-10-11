@@ -1,8 +1,10 @@
-import { Container, Drawer, List, ListItem, ListItemIcon, ListItemText, makeStyles, Typography } from "@material-ui/core";
+import { AppBar, Container, Drawer, List, ListItem, ListItemIcon, ListItemText, makeStyles, Toolbar, Typography } from "@material-ui/core";
 import React from "react";
 import SubjectIcon from '@mui/icons-material/Subject';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useHistory, useLocation } from "react-router";
+import {format} from 'date-fns'
+import Avatar from '@mui/material/Avatar';
 
 const drawerWidth = 240
 const ListMenu = [
@@ -19,10 +21,12 @@ const ListMenu = [
     
 
 ]
-const useStyles = makeStyles({
-    page:{
+const useStyles = makeStyles( (theme)=> {
+    return {
+        page:{
         background: '#f9f9f9',
-        width: '100%'
+        width: '100%',
+        padding: theme.spacing(3)
     },
     drawer:{
         width: drawerWidth,
@@ -35,7 +39,23 @@ const useStyles = makeStyles({
     },
     active:{
         background:'#f4f4f4'
+    },
+    title:{
+        padding: theme.spacing(2)
+    },
+    appbar:{
+        width:`calc(100% - ${drawerWidth}px)`
+    },
+    toolbar: theme.mixins.toolbar,
+    date:{
+        flexGrow: 1,
+    },
+    avatar:{
+        marginLeft: theme.spacing(2)
     }
+
+}
+    
 })
 
 export default function Layout( {children }){
@@ -47,6 +67,19 @@ const location = useLocation();
         <div className={classes.root}>
             {/* App Bar */}
 
+            <AppBar className={classes.appbar} elevation={3}>
+                <Toolbar>
+                    <Typography className={classes.date}>
+                      Today is the  {format(new Date(),'do MMMM Y')}
+                    </Typography>
+                    <Typography>
+                        UserName
+                    </Typography>
+                    <Avatar src="/photo.jpg" className={classes.avatar}/>
+                </Toolbar>
+            </AppBar>
+
+
             {/* Side Drawer */}
             <Drawer className={classes.drawer}
                 variant="permanent"
@@ -56,7 +89,7 @@ const location = useLocation();
                 }}
             
             >
-                <div>
+                <div className={classes.title}>
                     <Typography variant='h5'>
                         Options
                     </Typography> 
@@ -66,7 +99,8 @@ const location = useLocation();
                 <List>
                     {ListMenu.map(item => (
                         <ListItem key={item.text}
-                          button onClick={()=> history.push(item.path)}
+                          button 
+                          onClick={()=> history.push(item.path)}
                           className={location.pathname === item.path ? classes.active : null}
                           >
                             <ListItemIcon>{item.icon}</ListItemIcon>
@@ -78,6 +112,7 @@ const location = useLocation();
 
 
         <Container className={classes.page}>
+            <div className={classes.toolbar}></div>
             {children}
         </Container>
         
