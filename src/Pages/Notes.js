@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Container, Grid} from '@material-ui/core'
+import {Container} from '@material-ui/core'
 import NoteCard from '../Component/NoteCard';
 import Masonry from 'react-masonry-css'
 

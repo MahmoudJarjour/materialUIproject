@@ -5,6 +5,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useHistory, useLocation } from "react-router";
 import {format} from 'date-fns'
 import Avatar from '@mui/material/Avatar';
+import BarChartIcon from '@mui/icons-material/BarChart';
 
 const drawerWidth = 240
 const ListMenu = [
@@ -17,6 +18,11 @@ const ListMenu = [
         text:"create Note",
         icon: <AddCircleOutlineIcon color="secondary" />,
         path: '/',
+    },
+    {
+        text:'Charts',
+        icon: <BarChartIcon color="secondary" />,
+        path:'/charts'
     },
     
 

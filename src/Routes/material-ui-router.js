@@ -2,6 +2,7 @@
 import React from "react";
 import {BrowserRouter,Route, Switch} from "react-router-dom";
 import Layout from "../Component/Layout";
+import Chartview from "../Pages/Chartview";
 import HomePage from "../Pages/HomePage";
 import Notes from "../Pages/Notes";
 import NotFound from "../Pages/NotFound";
@@ -17,6 +18,7 @@ const Routers = () => {
                     <Route exact path="/notes">
                         <Notes />
                     </Route>
+                    <Route path='/charts' component={Chartview} />
                     <Route  component={NotFound}/>
                 </Switch>
             </Layout>
