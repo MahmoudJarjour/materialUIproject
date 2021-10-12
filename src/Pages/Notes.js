@@ -6,6 +6,7 @@ import Masonry from 'react-masonry-css'
 export default function Notes() {
   const [notes, setNotes] = useState([]);
 
+  // get data from DB.Json
   useEffect(() => {
     fetch('http://localhost:3001/notes')
       .then(res => res.json())
@@ -32,22 +33,18 @@ export default function Notes() {
   
   return (
     <Container>
-
-  <Masonry
-    breakpointCols={breakpoints}
-    className="my-masonry-grid"
-    columnClassName="my-masonry-grid_column">
-        
-        {notes.map( note => (
-           <div item key={note.id}>
-                <NoteCard note={note} handleDelete={handleDelete} />
-            </div>
-                            )
-                  )
-        }
-      
-  </Masonry>
-      
+        <Masonry
+          breakpointCols={breakpoints}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column">        
+              {notes.map( note => (
+                <div item key={note.id}>
+                      <NoteCard note={note} handleDelete={handleDelete} />
+                  </div>
+                                  )
+                        )
+              }          
+        </Masonry>   
     </Container>
   )
 }

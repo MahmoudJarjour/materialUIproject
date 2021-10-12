@@ -1,7 +1,9 @@
-import { Avatar, Card, CardContent, CardHeader, CardMedia, Grid, IconButton, makeStyles, Typography } from "@material-ui/core";
+import { Avatar, Card,CardActions, CardContent, CardHeader, CardMedia, Grid, IconButton, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { blue, purple , gray, pink } from "@material-ui/core/colors";
+import { blue, purple , pink } from "@material-ui/core/colors";
+
+import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -37,11 +39,12 @@ const useStyles = makeStyles({
 
 export default function NoteCard({note , handleDelete}){
     const classes = useStyles(note);
+    
+
     return (
         <>
-
         <Grid  > 
-            <Card elevation={3} className={classes.test}>
+            <Card elevation={3} className={classes.test} key={note.id}>
                 <CardHeader 
                     avatar={
                         <Avatar className={classes.avatar} variant='rounded'>{note.category[0].toUpperCase()}</Avatar>
@@ -68,6 +71,10 @@ export default function NoteCard({note , handleDelete}){
                         {note.discription}
                     </Typography>
                 </CardContent>
+                <CardActions>
+                    <Link size="small" to={`/card/${note.firstName}`}>View more</Link>
+                    
+                </CardActions>
             </Card>
         </Grid>   
         </>

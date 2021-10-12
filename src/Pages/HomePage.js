@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Typography, Button, Container} from "@mui/material";
+import { Button, Container} from "@mui/material";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import useStyles from "./Styles";
 import { useHistory } from "react-router-dom";

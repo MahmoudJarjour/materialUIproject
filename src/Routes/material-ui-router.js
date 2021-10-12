@@ -6,6 +6,8 @@ import Chartview from "../Pages/Chartview";
 import HomePage from "../Pages/HomePage";
 import Notes from "../Pages/Notes";
 import NotFound from "../Pages/NotFound";
+import ViewCard from "../Views/ViewCard";
+
 
 const Routers = () => {
     return(
@@ -19,7 +21,8 @@ const Routers = () => {
                         <Notes />
                     </Route>
                     <Route path='/charts' component={Chartview} />
-                    <Route  component={NotFound}/>
+                    <Route path={'/card/:firstName'} component={ViewCard} />
+                    <Route component={NotFound}/>
                 </Switch>
             </Layout>
         </BrowserRouter>
