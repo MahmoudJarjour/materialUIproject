@@ -1,5 +1,5 @@
-import './App.css';
-import Routers from './Routes/material-ui-router';
+import "./App.css";
+import Routers from "./Routes/material-ui-router";
 
 const App = () => {
   return (
@@ -7,6 +7,6 @@ const App = () => {
       <Routers />
     </>
   );
-}
+};
 
 export default App;
