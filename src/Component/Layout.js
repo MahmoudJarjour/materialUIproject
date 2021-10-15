@@ -17,6 +17,7 @@ import { useHistory, useLocation } from "react-router";
 import { format } from "date-fns";
 import Avatar from "@mui/material/Avatar";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import i18n from "../Locals/i18n";
 
 const drawerWidth = 240;
 const ListMenu = [
@@ -76,6 +77,10 @@ export default function Layout({ children }) {
   const history = useHistory();
   const location = useLocation();
 
+  const onChange = (e) =>{
+    i18n.changeLanguage(e.target.value)
+  }
+  
   return (
     <div className={classes.root}>
       {/* App Bar */}
@@ -85,6 +90,14 @@ export default function Layout({ children }) {
           <Typography className={classes.date}>
             Today is the {format(new Date(), "do MMMM Y")}
           </Typography>
+          
+          <select name="languages" onChange={onChange}  >
+            <option value="en" >English</option>
+            <option value="ar" >Arabic</option>
+          </select>
+
+
+
           <Typography>Mood Test</Typography>
           <Avatar src="/photo.jpg" className={classes.avatar} />
         </Toolbar>

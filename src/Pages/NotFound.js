@@ -4,6 +4,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import useStyles from "./Styles";
 import { useHistory } from "react-router-dom";
 
+
 const NotFound = () => {
   const classes = useStyles();
   let history = useHistory();
@@ -41,4 +42,4 @@ const NotFound = () => {
     </>
   );
 };
-export default NotFound;
+export default  NotFound;

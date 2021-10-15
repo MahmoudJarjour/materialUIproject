@@ -4,7 +4,8 @@ import NoteCard from "../Component/NoteCard";
 import Masonry from "react-masonry-css";
 import SearchBar from "../Component/SearchBar";
 
-export default function Notes() {
+
+const Notes = () => {
   const [notes, setNotes] = useState([]);
 
   // get data from DB.Json
@@ -49,6 +50,7 @@ export default function Notes() {
     </Container>
   );
 }
+export default Notes;
 
 /*
 

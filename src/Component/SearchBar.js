@@ -77,7 +77,7 @@ export default function SearchBar() {
           border: "0px solid transparent",
           borderRadius: "5px",
 
-          height: "118px",
+          
           fontSize: "40px",
         }}
       >

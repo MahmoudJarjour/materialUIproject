@@ -12,7 +12,8 @@ import { useParams, useHistory } from "react-router-dom";
 import useStyles from "./Styles";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-export default function ViewCard({ note, handleDelete }) {
+
+const ViewCard = ({ note, handleDelete}) => {
   const { firstName } = useParams();
   const classes = useStyles();
   const [notes, setNotes] = useState([]);
@@ -71,3 +72,4 @@ export default function ViewCard({ note, handleDelete }) {
     </>
   );
 }
+export default ViewCard;
