@@ -6,14 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import InputBase from "@mui/material/InputBase";
 
 import SearchIcon from "@mui/icons-material/Search";
-import {
-  Avatar,
-  Card,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Typography,
-} from "@material-ui/core";
+
 import { Link } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
