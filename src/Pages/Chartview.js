@@ -1,6 +1,8 @@
 import React from "react";
 import Charts from "../Component/Charts";
 
-export default function Chartview() {
+const Chartview = ()=> {
   return <Charts />;
 }
+
+export default Chartview;

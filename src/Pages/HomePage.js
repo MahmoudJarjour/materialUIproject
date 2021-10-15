@@ -10,9 +10,12 @@ import {
   RadioGroup,
   TextField,
 } from "@material-ui/core";
+
 import Radio from "@material-ui/core/Radio";
+import { withTranslation } from "react-i18next";
 
 const HomePage = () => {
+  const { t } = withTranslation();
   const classes = useStyles();
   const history = useHistory();
 
@@ -54,7 +57,7 @@ const HomePage = () => {
           variant="contained"
           onClick={() => history.push("/vjbkf")}
         >
-          button to 404 page
+          {t('button to 404 page')}
         </Button>
       </Container>
 
@@ -67,8 +70,8 @@ const HomePage = () => {
             required
             variant="standard"
             color="primary"
-            label="firstName"
-            placeholder="First Name"
+            label={t("First Name")}
+            placeholder={t("First Name")}
             className={classes.textfield}
             error={firstNameError}
           />
@@ -80,8 +83,8 @@ const HomePage = () => {
             required
             variant="filled"
             color="secondary"
-            label="lastName"
-            placeholder="Second Name"
+            label={t("Second Name")}
+            placeholder={t("Second Name")}
             className={classes.textfield}
             error={lastNameError}
           />
@@ -96,7 +99,7 @@ const HomePage = () => {
             variant="outlined"
             color="primary"
             label="discription"
-            placeholder="Last Name "
+            placeholder={t("discription")}
             className={classes.textfield}
             error={discriptionError}
           />
@@ -108,7 +111,7 @@ const HomePage = () => {
             variant="contained"
             type="submit"
           >
-            Submit
+            {t('Submit')}
           </Button>
         </form>
       </Container>
