@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "@material-ui/core";
+import { Container, makeStyles } from "@material-ui/core";
 import NoteCard from "../Component/NoteCard";
 import Masonry from "react-masonry-css";
 import SearchBar from "../Component/SearchBar";
 import { withTranslation } from "react-i18next";
+
 
 
 const Notes = () => {
@@ -34,10 +35,31 @@ const Notes = () => {
     700: 1,
   };
 
+  const useStyles = makeStyles((theme) => ({
+    root:{
+      margin : theme.spacing(3,0,2,0),
+    },
+    paper:{
+      marginButtom: theme.spacing(4),
+    },
+    masonaryGrid:{
+      display:'flex',
+      marginLeft: theme.spacing(-4),
+      width:'inherit',
+    },
+    masonryColumn:{
+      paddingLeft: theme.spacing(4),
+      backgroundClip: 'padding-box'
+    }
+
+  }))
+
   return (
-    <Container>
+    
+    <Container style={useStyles()}>
       <SearchBar spacing={"20px"} />
       <Masonry
+
         breakpointCols={breakpoints}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"

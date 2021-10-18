@@ -9,15 +9,30 @@ import Notes from "../Pages/Notes";
 import ViewCard from "../Pages/ViewCard";
 import i18next from "i18next";
 import i18n from "../i18n";
-import { createMuiTheme } from "@material-ui/core";
+import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@material-ui/styles";
 import NotFound from '../Pages/NotFound'
 
-const getLanguage =() => i18next.language || window.localStorage.i18nextLng
-const theme = createMuiTheme({
-    direction: getLanguage() === 'ar' ? 'rtl' : 'ltr',
-})
-// 
+const getLanguage = () => i18next.language || window.localStorage.i18nextLng;
+const themes = createTheme({
+	direction: getLanguage() === 'ar' ? 'rtl' : 'ltr',
+	overrides: {
+		MuiFormLabel: {
+			root: {
+				right: getLanguage() === 'ar' ? 30 : 'unset',
+				left: getLanguage() === 'ar' ? 'unset' : 0,
+				'&$focused': {
+					right: getLanguage() === 'ar' ? 20 : 'unset',
+					left: getLanguage() === 'ar' ? 'unset' : 0,
+				},
+				'&$filled': {
+					right: getLanguage() === 'ar' ? 20 : 'unset',
+					left: getLanguage() === 'ar' ? 'unset' : 0,
+				},
+			},
+		},
+	},
+});
 const Routers = () => {
   
 
@@ -36,7 +51,7 @@ const Routers = () => {
   return (
     
     <BrowserRouter basename={getLanguage() === 'ar' ? 'ar' : 'en'} forceRefresh={true} >
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={themes}>
         <Layout>
             <Switch>
               <Route path="/" exact component={HomePage} />

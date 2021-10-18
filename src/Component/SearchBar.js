@@ -75,6 +75,7 @@ const {t} = useTranslation();
           overflowY: "scroll",
           height: "70px",
           paddingLeft: "35px",
+          paddingRight:"35px",
           color: "gray",
 
           border: "0px solid transparent",
