@@ -9,6 +9,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 
 import { useTranslation, withTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { display } from '@mui/system';
 
 const getLanguage = () => i18next.language || window.localStorage.i18nextLng
 const drawerWidth = 240;
@@ -34,10 +35,11 @@ const useStyles = makeStyles((theme) => {
 	return {
 		page: {
 			background: '#f9f9f9',
-			width: '100%',
+			width: getLanguage() === 'ar' ? `calc(100% + ${drawerWidth}px)` : `calc(100% - ${drawerWidth}px)`,
 			padding: theme.spacing(6),
 			marginRight: getLanguage() === 'ar' ? drawerWidth : '',
       marginLeft: getLanguage() === 'en' ? drawerWidth : "",
+
 
 		},
 
@@ -49,7 +51,9 @@ const useStyles = makeStyles((theme) => {
 			width: drawerWidth,
 		},
 		root: {
-			display: 'flex',
+			width: getLanguage() === 'ar' ? `calc(100% + ${drawerWidth}px)` : `calc(100% - ${drawerWidth}px)`,
+      padding: 0 ,
+      
 		},
 		active: {
 			background: '#f4f4f4',
@@ -62,12 +66,15 @@ const useStyles = makeStyles((theme) => {
       paddingRight : getLanguage() === 'ar' ? drawerWidth : ''
       
 		},
-		toolbar:  theme.mixins.toolbar ,
+		toolbar: theme.mixins.toolbar,
+      
 		date: {
 			flexGrow: 1,
 		},
 		avatar: {
-			marginLeft: theme.spacing(2),
+			marginLeft:  getLanguage() === 'en' ?  theme.spacing(2) : '',
+      
+      
 		},
 	};
 });
