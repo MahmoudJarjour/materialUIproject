@@ -17,7 +17,11 @@ import { useHistory, useLocation } from "react-router";
 import { format } from "date-fns";
 import Avatar from "@mui/material/Avatar";
 import BarChartIcon from "@mui/icons-material/BarChart";
-import i18n from "../Locals/i18n";
+
+import {useTranslation, withTranslation} from 'react-i18next'
+
+
+
 
 const drawerWidth = 240;
 const ListMenu = [
@@ -72,14 +76,12 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   const classes = useStyles();
   const history = useHistory();
   const location = useLocation();
+  const {t} = useTranslation();
 
-  const onChange = (e) =>{
-    i18n.changeLanguage(e.target.value)
-  }
   
   return (
     <div className={classes.root}>
@@ -90,15 +92,11 @@ export default function Layout({ children }) {
           <Typography className={classes.date}>
             Today is the {format(new Date(), "do MMMM Y")}
           </Typography>
-          
-          <select name="languages" onChange={onChange}  >
-            <option value="en" >English</option>
-            <option value="ar" >Arabic</option>
-          </select>
+            
+        
 
 
-
-          <Typography>Mood Test</Typography>
+          <Typography>{t('Mood Test')}</Typography>
           <Avatar src="/photo.jpg" className={classes.avatar} />
         </Toolbar>
       </AppBar>
@@ -141,3 +139,4 @@ export default function Layout({ children }) {
     </div>
   );
 }
+export default withTranslation() (Layout);

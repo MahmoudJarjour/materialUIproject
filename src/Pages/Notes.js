@@ -3,6 +3,7 @@ import { Container } from "@material-ui/core";
 import NoteCard from "../Component/NoteCard";
 import Masonry from "react-masonry-css";
 import SearchBar from "../Component/SearchBar";
+import { withTranslation } from "react-i18next";
 
 
 const Notes = () => {
@@ -50,7 +51,7 @@ const Notes = () => {
     </Container>
   );
 }
-export default Notes;
+export default withTranslation() (Notes);
 
 /*
 

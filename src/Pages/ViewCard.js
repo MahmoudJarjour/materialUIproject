@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import useStyles from "./Styles";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useTranslation, withTranslation } from "react-i18next";
 
 
 const ViewCard = ({ note, handleDelete}) => {
@@ -24,6 +25,8 @@ const ViewCard = ({ note, handleDelete}) => {
       .then((res) => res.json())
       .then((data) => setNotes(data));
   }, []);
+
+  const {t} = useTranslation();
 
   return (
     <>
@@ -63,7 +66,7 @@ const ViewCard = ({ note, handleDelete}) => {
                   color="primary"
                   onClick={() => history.goBack()}
                 >
-                  Back{" "}
+                  {t('Back')}{" "}
                 </Button>
               </>
             ))}
@@ -72,4 +75,4 @@ const ViewCard = ({ note, handleDelete}) => {
     </>
   );
 }
-export default ViewCard;
+export default withTranslation() (ViewCard);

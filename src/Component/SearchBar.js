@@ -8,6 +8,7 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 
 import { Link } from "react-router-dom";
+import { useTranslation, withTranslation } from "react-i18next";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -51,7 +52,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchBar() {
+const  SearchBar = ()  => {
+const {t} = useTranslation();
+
   const [notes, setNotes] = React.useState([]);
   const [searchField, setSearchField] = React.useState("");
 
@@ -122,7 +125,7 @@ export default function SearchBar() {
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder="Search Cards"
+                placeholder={t("Search Cards")}
                 onChange={handleChange}
               />
               {SearchHandler()}
@@ -133,3 +136,5 @@ export default function SearchBar() {
     </>
   );
 }
+
+export default withTranslation()(SearchBar)

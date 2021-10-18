@@ -15,6 +15,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { blue, purple, pink } from "@material-ui/core/colors";
 
 import { Link } from "react-router-dom";
+import { useTranslation, withTranslation } from "react-i18next";
 
 const useStyles = makeStyles({
   test: {
@@ -44,8 +45,10 @@ const useStyles = makeStyles({
   },
 });
 
-export default function NoteCard({ note, handleDelete }) {
+const NoteCard = ({ note, handleDelete }) => {  
   const classes = useStyles(note);
+
+  const {t} = useTranslation();
 
   return (
     <>
@@ -78,7 +81,7 @@ export default function NoteCard({ note, handleDelete }) {
           </CardContent>
           <CardActions>
             <Link size="small" to={`/card/${note.firstName}`}>
-              View more
+              {t('View more')}
             </Link>
           </CardActions>
         </Card>
@@ -86,3 +89,4 @@ export default function NoteCard({ note, handleDelete }) {
     </>
   );
 }
+export default withTranslation() (NoteCard);

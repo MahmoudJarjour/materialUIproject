@@ -1,10 +1,13 @@
+import { Typography } from "@material-ui/core";
 import React from "react";
+import { useTranslation, withTranslation } from "react-i18next";
 import {  AreaChart, Area, XAxis,YAxis,CartesianGrid,Tooltip } from "recharts";
 import data from '../data/chartsdata'
 
 
 
-export default function Charts() {
+const Charts = () => {
+  const {t} = useTranslation();
   return (
     <>
       <AreaChart width={750} height={500} data={data}
@@ -26,6 +29,12 @@ export default function Charts() {
   <Area type="monotone" dataKey="price" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
   
 </AreaChart>
+
+<Typography>
+  {t('chart discription')}
+</Typography>
     </>
   );
 }
+
+export default withTranslation() (Charts);

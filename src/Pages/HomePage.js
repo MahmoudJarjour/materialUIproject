@@ -12,12 +12,21 @@ import {
 } from "@material-ui/core";
 
 import Radio from "@material-ui/core/Radio";
-import { withTranslation } from "react-i18next";
+import { useTranslation, withTranslation} from "react-i18next";
+
+
+
+
+
+
 
 const HomePage = () => {
-  const { t } = withTranslation();
+ 
+
+  
   const classes = useStyles();
   const history = useHistory();
+  const {t} = useTranslation();
 
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -70,8 +79,8 @@ const HomePage = () => {
             required
             variant="standard"
             color="primary"
-            label={t("First Name")}
-            placeholder={t("First Name")}
+            label={t('First Name')}
+            placeholder={t('First Name')}
             className={classes.textfield}
             error={firstNameError}
           />
@@ -83,8 +92,8 @@ const HomePage = () => {
             required
             variant="filled"
             color="secondary"
-            label={t("Second Name")}
-            placeholder={t("Second Name")}
+            label={t('Second Name')}
+            placeholder={t('Second Name')}
             className={classes.textfield}
             error={lastNameError}
           />
@@ -98,7 +107,7 @@ const HomePage = () => {
             required
             variant="outlined"
             color="primary"
-            label="discription"
+            label={t("discription")}
             placeholder={t("discription")}
             className={classes.textfield}
             error={discriptionError}
@@ -118,7 +127,7 @@ const HomePage = () => {
 
       <Container style={{ paddingTop: "20px" }}>
         <FormControl>
-          <FormLabel>Select Category</FormLabel>
+          <FormLabel>{t('Select Category')}</FormLabel>
           <RadioGroup
             value="category"
             onChange={(e) => setCategory(e.target.value)}
@@ -126,14 +135,14 @@ const HomePage = () => {
             <FormControlLabel
               value="female"
               control={<Radio />}
-              label="Female"
+              label={t('Female')}
             />
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
-            <FormControlLabel value="other" control={<Radio />} label="Other" />
+            <FormControlLabel value="male" control={<Radio />} label={t("Male")} />
+            <FormControlLabel value="other" control={<Radio />} label={t("Other")} />
           </RadioGroup>
         </FormControl>
       </Container>
     </>
   );
 };
-export default HomePage;
+export default withTranslation() (HomePage);
