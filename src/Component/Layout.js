@@ -111,7 +111,7 @@ const Layout = ({ children }) => {
         }}
       >
         <div className={classes.title}>
-          <Typography variant="h5">Options</Typography>
+          <Typography variant="h5">{t("Options")}</Typography>
         </div>
 
         {/* List / icon List */}
