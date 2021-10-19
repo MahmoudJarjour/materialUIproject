@@ -9,10 +9,10 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 
 import { useTranslation, withTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import { display } from '@mui/system';
 
-const getLanguage = () => i18next.language || window.localStorage.i18nextLng
-const drawerWidth = 240;
+const getLanguage = () => i18next.language || window.localStorage.i18nextLng;
+const drawerWidth = 250;
+const { t } = withTranslation();
 const ListMenu = [
 	{
 		text: 'My Notes',
@@ -33,48 +33,64 @@ const ListMenu = [
 
 const useStyles = makeStyles((theme) => {
 	return {
-		page: {
-			background: '#f9f9f9',
-			width: getLanguage() === 'ar' ? `calc(100% + ${drawerWidth}px)` : `calc(100% - ${drawerWidth}px)`,
-			padding: theme.spacing(6),
-			marginRight: getLanguage() === 'ar' ? drawerWidth : '',
-      marginLeft: getLanguage() === 'en' ? drawerWidth : "",
-
-
-		},
-
 		drawer: {
 			width: drawerWidth,
 			direction: getLanguage() === 'ar' ? 'rtl' : 'ltr',
+			
+
 		},
 		drawerPaper: {
 			width: drawerWidth,
+			
+		},
+		page: {
+		
+			background: '#f9f9f9',
+			// minWidth: getLanguage() === 'ar' ? `calc(100% + ${drawerWidth}px)` : `calc(100% - ${drawerWidth}px)`,
+			padding: theme.spacing(2),
+			marginRight: getLanguage() === 'ar' ? drawerWidth : '0px',
+			marginLeft: getLanguage() === 'en' ? drawerWidth : '0px',
+			minWidth: '100%',
+			
 		},
 		root: {
-			width: getLanguage() === 'ar' ? `calc(100% + ${drawerWidth}px)` : `calc(100% - ${drawerWidth}px)`,
-      padding: 0 ,
-      
+			width:`calc(100% - ${drawerWidth}px)`,
+			padding: 0,
 		},
 		active: {
 			background: '#f4f4f4',
 		},
-		title: {
-			padding: theme.spacing(2),
-		},
 		appbar: {
 			width: getLanguage() === 'en' ? `calc(100% - ${drawerWidth}px)` : `calc(100% + ${drawerWidth}px)`,
-      paddingRight : getLanguage() === 'ar' ? drawerWidth : ''
-      
+			paddingLeft: getLanguage() === 'ar' ? `calc(100% - ${drawerWidth}px)` : 'auto'
 		},
 		toolbar: theme.mixins.toolbar,
-      
+
 		date: {
-			flexGrow: 1,
+			flexGrow: getLanguage() === 'ar' ? -1 : 1,
+			paddingRight: getLanguage() === 'ar' ? drawerWidth : '',
+			
+
 		},
+
 		avatar: {
-			marginLeft:  getLanguage() === 'en' ?  theme.spacing(2) : '',
-      
-      
+			// marginLeft: '2%',
+			
+			
+
+		},
+		avatartext:{
+			// marginLeft: '60%',
+			
+		},
+		icon: {
+			padding: '20px',
+		},
+		title: {
+			paddingRight: '50px',
+			paddingLeft: '50px',
+			paddingTop: '30px',
+			padding: getLanguage() === 'ar' ? theme.spacing(1) : '',
 		},
 	};
 });
@@ -86,50 +102,48 @@ const Layout = ({ children }) => {
 	const { t } = useTranslation();
 
 	return (
-		
-			<div className={classes.root}>
-				{/* App Bar */}
+		<div className={classes.root}>
+			{/* App Bar */}
 
-				<AppBar className={classes.appbar} elevation={3}>
-					<Toolbar>
-						<Typography className={classes.date}>Today is the {format(new Date(), 'do MMMM Y')}</Typography>
+			<AppBar className={classes.appbar} elevation={3} anchor={getLanguage() === 'ar' ? 'right' : 'left'} > 
+				<Toolbar>
+					<Typography className={classes.date}>Today is the {format(new Date(), 'do MMMM Y')}</Typography>
 
-						<Typography>{t('Mood Test')}</Typography>
-						<Avatar src="/photo.jpg" className={classes.avatar} />
-					</Toolbar>
-				</AppBar>
+					<Typography className={classes.avatartext}>{t('Mood Test')}</Typography>
+					<Avatar src="/photo.jpg" className={classes.avatar} />
+				</Toolbar>
+			</AppBar>
 
-				{/* Side Drawer */}
+			{/* Side Drawer */}
 
-				<Drawer
-					className={classes.drawer}
-					variant="permanent"
-					anchor={getLanguage() === 'ar' ? 'right' : 'left'}
-					classes={{
-						paper: classes.drawerPaper,
-					}}
-				>
-					<div className={classes.title}>
-						<Typography variant="h5">{t('Options')}</Typography>
-					</div>
+			<Drawer
+				className={classes.drawer}
+				variant="permanent"
+				anchor={getLanguage() === 'ar' ? 'right' : 'left'}
+				classes={{
+					paper: classes.drawerPaper,
+				}}
+			>
+				<div className={classes.title}>
+					<Typography variant="h5">{t('Options')}</Typography>
+				</div>
 
-					{/* List / icon List */}
-					<List className={classes.content}>
-						{ListMenu.map((item) => (
-							<ListItem key={item.text} button onClick={() => history.push(item.path)} className={location.pathname === item.path ? classes.active : null}>
-								<ListItemIcon>{item.icon}</ListItemIcon>
-								<ListItemText primary={item.text} />
-							</ListItem>
-						))}
-					</List>
-				</Drawer>
+				{/* List / icon List */}
+				<List className={classes.content}>
+					{ListMenu.map((item) => (
+						<ListItem key={item.text} button onClick={() => history.push(item.path)} className={location.pathname === item.path ? classes.active : null}>
+							<ListItemIcon className={classes.icon}>{item.icon}</ListItemIcon>
+							<ListItemText primary={item.text} />
+						</ListItem>
+					))}
+				</List>
+			</Drawer>
 
-				<Container className={classes.page}>
-					<div className={classes.toolbar}></div>
-					{children}
-				</Container>
-			</div>
-		
+			<Container className={classes.page}>
+				<div className={classes.toolbar}></div>
+				{children}
+			</Container>
+		</div>
 	);
 };
 export default withTranslation()(Layout);

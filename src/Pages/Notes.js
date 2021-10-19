@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Container, makeStyles } from "@material-ui/core";
+import { Container, makeStyles, useTheme } from "@material-ui/core";
 import NoteCard from "../Component/NoteCard";
 import Masonry from "react-masonry-css";
 import SearchBar from "../Component/SearchBar";
 import { withTranslation } from "react-i18next";
+
 
 
 
@@ -29,10 +30,18 @@ const Notes = () => {
     setNotes(newNotes);
   };
 
+  const theme = useTheme();
+  
+
   const breakpoints = {
     default: 3,
-    1100: 2,
-    700: 1,
+    /*1100: 2,
+    700: 1,*/
+    [theme.breakpoints.values.xl]:3,
+    [theme.breakpoints.values.lg]:2,
+    [theme.breakpoints.values.md]:2,
+    [theme.breakpoints.values.sm]:1,
+    [theme.breakpoints.values.xs]:1
   };
 
   const useStyles = makeStyles((theme) => ({
@@ -41,28 +50,33 @@ const Notes = () => {
     },
     paper:{
       marginButtom: theme.spacing(4),
+      
     },
     masonaryGrid:{
+      paddingTop: theme.spacing(3),
       display:'flex',
-      marginLeft: theme.spacing(-4),
+      marginLeft: theme.spacing(0),
       width:'inherit',
+      gap: "5px",
+      
     },
     masonryColumn:{
       paddingLeft: theme.spacing(4),
+      
       backgroundClip: 'padding-box'
     }
 
   }))
-
+  const classes = useStyles();
   return (
     
-    <Container style={useStyles()}>
+    <Container style={useStyles()} spacing={5} md={6} xs={12}>
       <SearchBar spacing={"20px"} />
       <Masonry
 
         breakpointCols={breakpoints}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
+        className={classes.masonaryGrid}
+        columnClassName={classes.masonaryColumn}
       >
         {notes.map((note) => (
           <div item="true" key={note.id}>

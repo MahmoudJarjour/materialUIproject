@@ -9,6 +9,9 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import { Link } from "react-router-dom";
 import { useTranslation, withTranslation } from "react-i18next";
+import i18next from "i18next";
+import { ClassNames } from "@emotion/react";
+import { makeStyles } from "@material-ui/core";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -25,8 +28,10 @@ const Search = styled("div")(({ theme }) => ({
   },
 }));
 
+const getLanguage = () => i18next.language || window.localStorage.i18nextLng;
+
 const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
+  padding: theme.spacing(0,2),
   height: "100%",
   position: "absolute",
   pointerEvents: "none",
@@ -38,7 +43,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
+    padding: getLanguage() === 'en' ? theme.spacing(1, 1, 1, 0) : theme.spacing(1,1,0,1),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
@@ -52,7 +57,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
 const  SearchBar = ()  => {
+
 const {t} = useTranslation();
 
   const [notes, setNotes] = React.useState([]);
@@ -128,6 +136,7 @@ const {t} = useTranslation();
               <StyledInputBase
                 placeholder={t("Search Cards")}
                 onChange={handleChange}
+                
               />
               {SearchHandler()}
             </Search>

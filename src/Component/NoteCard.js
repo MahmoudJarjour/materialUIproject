@@ -13,10 +13,13 @@ import {
 import React from "react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { blue, purple, pink } from "@material-ui/core/colors";
+import i18next from "i18next";
 
 import { Link } from "react-router-dom";
 import { useTranslation, withTranslation } from "react-i18next";
 
+
+const getLanguage = () => i18next.language || window.localStorage.i18nextLng
 const useStyles = makeStyles({
   test: {
     border: (note) => {
@@ -42,7 +45,13 @@ const useStyles = makeStyles({
         return pink[500];
       }
     },
+    
+    
   },
+  griditems:{
+    padding:'10px',
+
+  }
 });
 
 const NoteCard = ({ note, handleDelete }) => {  
@@ -52,9 +61,9 @@ const NoteCard = ({ note, handleDelete }) => {
 
   return (
     <>
-      <Grid>
+      <Grid className={classes.griditems}>
         <Card elevation={3} className={classes.test} key={note.id}>
-          <CardHeader
+          <CardHeader className={classes.cardHeader}
             avatar={
               <Avatar className={classes.avatar} variant="rounded">
                 {note.category[0].toUpperCase()}
@@ -68,6 +77,7 @@ const NoteCard = ({ note, handleDelete }) => {
             title={note.firstName + " " + note.lastName}
             subheader={note.category}
           ></CardHeader>
+
           <CardMedia
             component="img"
             height="194"
