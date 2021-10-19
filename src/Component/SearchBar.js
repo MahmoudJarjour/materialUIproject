@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { useTranslation, withTranslation } from "react-i18next";
 import i18next from "i18next";
 import { ClassNames } from "@emotion/react";
-import { makeStyles } from "@material-ui/core";
+import { Container, makeStyles } from "@material-ui/core";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -46,6 +46,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     padding: getLanguage() === 'en' ? theme.spacing(1, 1, 1, 0) : theme.spacing(1,1,0,1),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    paddingRight: getLanguage() === 'ar' ? `calc(1em + ${theme.spacing(4)})` : 'auto',
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
@@ -128,7 +129,7 @@ const {t} = useTranslation();
     <>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="center">
-          <Toolbar>
+          
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -140,7 +141,7 @@ const {t} = useTranslation();
               />
               {SearchHandler()}
             </Search>
-          </Toolbar>
+         
         </AppBar>
       </Box>
     </>

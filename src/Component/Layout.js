@@ -77,6 +77,7 @@ const useStyles = makeStyles((theme) => {
 			// marginLeft: '2%',
 			
 			
+			
 
 		},
 		avatartext:{

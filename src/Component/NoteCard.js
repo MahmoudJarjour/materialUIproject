@@ -45,13 +45,14 @@ const useStyles = makeStyles({
         return pink[500];
       }
     },
-    
+   
     
   },
-  griditems:{
-    padding:'10px',
-
+  griditems: {
+    
+    padding: '10px'
   }
+  
 });
 
 const NoteCard = ({ note, handleDelete }) => {  
