@@ -12,7 +12,7 @@ import i18next from 'i18next';
 
 const getLanguage = () => i18next.language || window.localStorage.i18nextLng;
 const drawerWidth = 250;
-const { t } = withTranslation();
+
 const ListMenu = [
 	{
 		text: 'My Notes',
@@ -55,8 +55,8 @@ const useStyles = makeStyles((theme) => {
 		},
 		root: {
 			width:`calc(100% - ${drawerWidth}px)`,
-			padding: 0,
 		},
+		
 		active: {
 			background: '#f4f4f4',
 		},

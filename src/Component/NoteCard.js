@@ -45,7 +45,7 @@ const useStyles = makeStyles({
         return pink[500];
       }
     },
-   
+    marginLeft: getLanguage() ==='ar' ? '10px' : '', 
     
   },
   griditems: {
